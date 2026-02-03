@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Virtualenv
+venv/
+.env
+.env.*
+
+# VS Code / IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Docker
+*.db
+postgres_data/
+wallet_data/
+
+# Testing / coverage (even if not used)
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Misc
+*.sqlite3
