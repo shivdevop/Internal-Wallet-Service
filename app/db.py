@@ -16,6 +16,6 @@ AsyncSessionLocal=sessionmaker(engine, class_=AsyncSession, expire_on_commit=Fal
 
 #dependency we can inject further into routes 
 async def get_db():
-    with AsyncSessionLocal() as session:
+    async with AsyncSessionLocal() as session:
             yield session
  
