@@ -11,6 +11,7 @@ services:
       - "5432:5432"
     volumes:
       - wallet_data:/var/lib/postgresql/data
+      - ./seed.sql:/docker-entrypoint-initdb.d/seed.sql
 
 volumes:
   wallet_data:
