@@ -10,3 +10,9 @@ class TopUpRequest(BaseModel):
     amount: int
     idempotency_key: str
 
+class BonusRequest(BaseModel):
+    user_wallet_id: int
+    amount: int
+    idempotency_key: str
+
+    

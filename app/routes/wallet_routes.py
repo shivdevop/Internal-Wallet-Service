@@ -1,9 +1,9 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 from app.db import get_db
-from app.schemas import SpendRequest, TopUpRequest
+from app.schemas import SpendRequest, TopUpRequest, BonusRequest
 from app.services.ledger_service import get_wallet_balance
-from app.services.wallet_service import spend_money,top_up_money
+from app.services.wallet_service import spend_money,top_up_money,bonus_money
 
 router=APIRouter(prefix="/wallets", tags=["wallets"])
 
@@ -25,3 +25,8 @@ async def topUpMoney(request: TopUpRequest, db: AsyncSession=Depends(get_db)):
 
     result=await top_up_money(db, request.user_wallet_id, request.amount, request.idempotency_key)
     return result
+
+@router.post("/bonus")
+async def bonusMoney(request: BonusRequest, db: AsyncSession=Depends(get_db)):
+    result= await bonus_money(db,request.user_wallet_id,request.amount,request.idempotency_key)
+    return result 
