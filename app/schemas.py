@@ -5,4 +5,8 @@ class SpendRequest(BaseModel):
     amount: int
     idempotency_key: str
 
-    
+class TopUpRequest(BaseModel):
+    user_wallet_id: int
+    amount: int
+    idempotency_key: str
+
