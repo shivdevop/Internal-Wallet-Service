@@ -13,5 +13,15 @@ services:
       - wallet_data:/var/lib/postgresql/data
       - ./seed.sql:/docker-entrypoint-initdb.d/seed.sql
 
+  app:
+    build: .
+    container_name: wallet_app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgresql+asyncpg://wallet:wallet@db:5432/wallet_db
+
 volumes:
   wallet_data:
