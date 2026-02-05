@@ -32,7 +32,7 @@ async def spend_money(
     if ext_txn and ext_txn.status=="COMPLETED":
         return{
             "status":"ALREADY_PROCESSED",
-            "message":"Transaction already processed"
+            "message":"Spend already processed"
         }
 
     new_txn_id=uuid.uuid4()
@@ -142,7 +142,7 @@ async def top_up_money(
 
     return {
         "status":"COMPLETED",
-        "message":"Money top up successfully",
+        "message":"Money topped up successfully",
         "transaction_id":new_txn_id
     }
 
@@ -159,7 +159,8 @@ async def bonus_money(
     ext_txn=existing_transaction.scalar_one_or_none()
     if ext_txn and ext_txn.status=="COMPLETED":
         return{
-            "status":"ALREADY_PROCESSED"
+            "status":"ALREADY_PROCESSED",
+            "message":"Bonus already processed"
             }
 
     new_txn_id=uuid.uuid4()
@@ -199,5 +200,7 @@ async def bonus_money(
     await db.commit()
 
     return {
-        "message":"Bonus money credited"
+        "status":"COMPLETED",
+        "message":"Bonus money credited",
+         "transaction_id":new_txn_id
     }
